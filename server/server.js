@@ -8,6 +8,9 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3001
 
+// Allow Railway/Render to set the port
+const HOST = process.env.HOST || '0.0.0.0'
+
 // Middleware
 app.use(cors())
 app.use(express.json())
@@ -182,8 +185,8 @@ app.get('/api/health', (req, res) => {
 })
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-  console.log(`Health check: http://localhost:${PORT}/api/health`)
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on ${HOST}:${PORT}`)
+  console.log(`Health check: http://${HOST}:${PORT}/api/health`)
 })
 
