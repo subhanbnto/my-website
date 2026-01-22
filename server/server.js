@@ -7,8 +7,6 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
-
-// Allow Railway/Render to set the port
 const HOST = process.env.HOST || '0.0.0.0'
 
 // Middleware
