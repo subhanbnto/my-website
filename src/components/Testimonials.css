@@ -1,0 +1,135 @@
+.testimonials {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-scroll-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 0;
+  margin: 0 -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-purple) var(--bg-primary);
+}
+
+.testimonials-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.testimonials-scroll-container::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: 4px;
+}
+
+.testimonials-scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+  border-radius: 4px;
+}
+
+.testimonials-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+}
+
+.testimonials-scroll {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.testimonials-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-card {
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: default;
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+}
+
+.testimonial-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.3);
+}
+
+.testimonial-quote {
+  font-size: 40px;
+  color: var(--accent-purple);
+  opacity: 0.3;
+  margin-bottom: 15px;
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 18px;
+}
+
+.testimonial-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.author-role {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 25px;
+  }
+
+  .testimonials-scroll {
+    gap: 20px;
+  }
+}
+

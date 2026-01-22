@@ -1,0 +1,134 @@
+.experience {
+  position: relative;
+}
+
+.experience-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan));
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.experience-icon {
+  position: absolute;
+  left: -45px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  font-size: 18px;
+  z-index: 1;
+}
+
+.experience-content {
+  flex: 1;
+  padding: 25px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.experience-content:hover {
+  border-color: var(--accent-cyan);
+  transform: translateX(10px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+}
+
+.experience-header {
+  margin-bottom: 15px;
+}
+
+.experience-header h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.experience-company {
+  color: var(--accent-cyan);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.experience-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.experience-location,
+.experience-period {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.experience-description {
+  list-style: none;
+  padding: 0;
+}
+
+.experience-description li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.experience-description li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-purple);
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 20px;
+  }
+
+  .experience-timeline::before {
+    left: 10px;
+  }
+
+  .experience-icon {
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .experience-content {
+    padding: 20px;
+  }
+
+  .experience-content:hover {
+    transform: translateX(5px);
+  }
+}
+
