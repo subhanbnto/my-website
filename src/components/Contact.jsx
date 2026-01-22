@@ -13,7 +13,23 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
   const [statusMessage, setStatusMessage] = useState('')
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+  // Use Netlify Function in production, local backend in development
+  const getApiUrl = () => {
+    // If VITE_API_URL is explicitly set, use it
+    if (import.meta.env.VITE_API_URL) {
+      return import.meta.env.VITE_API_URL.startsWith('http') 
+        ? `${import.meta.env.VITE_API_URL}/api/contact`
+        : import.meta.env.VITE_API_URL
+    }
+    // In production (Netlify), use Netlify Function
+    if (import.meta.env.MODE === 'production' || import.meta.env.PROD) {
+      return '/.netlify/functions/contact'
+    }
+    // In development, use local backend
+    return 'http://localhost:3001/api/contact'
+  }
+  
+  const API_URL = getApiUrl()
 
   const handleChange = (e) => {
     setFormData({
@@ -34,7 +50,7 @@ const Contact = () => {
     setStatusMessage('')
 
     try {
-      const response = await fetch(`${API_URL}/api/contact`, {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
