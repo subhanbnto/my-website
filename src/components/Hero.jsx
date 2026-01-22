@@ -74,7 +74,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <span>I'm a </span>
+            <span className="hero-title-prefix">I'm a</span>
             <span className="typing-text">{displayText}</span>
             <span className="cursor">|</span>
           </motion.div>
