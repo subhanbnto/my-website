@@ -332,7 +332,7 @@ This project is open source and available for personal use.
 ## 👤 Author
 
 **Subhan Hanif**
-- Website: [Portfolio](https://subhanhanif.dev)
+- Website: [Portfolio](https://subhan.ca)
 - Email: info@subhan.ca
 - LinkedIn: [subhanhanif521](https://www.linkedin.com/in/subhanhanif521/)
 - GitHub: [@subhanbnto](https://github.com/subhanbnto)
