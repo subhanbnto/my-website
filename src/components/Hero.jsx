@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { HiArrowDown } from 'react-icons/hi'
@@ -9,40 +9,57 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
-  const mountedRef = useRef(false)
 
   const roles = ['Full Stack Developer', 'Web Developer', 'Software Engineer', 'Mobile App Developer']
 
+  // Initialize typing on mount
   useEffect(() => {
-    if (!mountedRef.current) {
-      mountedRef.current = true
-      // Start with first character
+    if (displayText === '' && !isDeleting) {
       setDisplayText(roles[0][0])
-      return
     }
+  }, [])
 
+  useEffect(() => {
+    let timer
+    
     const handleTyping = () => {
       const current = loopNum % roles.length
       const currentText = roles[current]
 
-      setDisplayText(
-        isDeleting
-          ? currentText.substring(0, displayText.length - 1)
-          : currentText.substring(0, displayText.length + 1)
-      )
-
-      setTypingSpeed(isDeleting ? 50 : 150)
-
-      if (!isDeleting && displayText === currentText) {
-        setTimeout(() => setIsDeleting(true), 2000)
-      } else if (isDeleting && displayText === '') {
-        setIsDeleting(false)
-        setLoopNum(loopNum + 1)
+      if (isDeleting) {
+        // Deleting text
+        if (displayText.length > 0) {
+          setDisplayText(currentText.substring(0, displayText.length - 1))
+          setTypingSpeed(50)
+        } else {
+          // Finished deleting, move to next role
+          setIsDeleting(false)
+          setLoopNum(loopNum + 1)
+          setTypingSpeed(150)
+        }
+      } else {
+        // Typing text
+        if (displayText.length < currentText.length) {
+          setDisplayText(currentText.substring(0, displayText.length + 1))
+          setTypingSpeed(150)
+        } else {
+          // Finished typing, wait then start deleting
+          setTypingSpeed(150)
+          timer = setTimeout(() => {
+            setIsDeleting(true)
+          }, 2000)
+          return
+        }
       }
+
+      timer = setTimeout(handleTyping, typingSpeed)
     }
 
-    const timer = setTimeout(handleTyping, typingSpeed)
-    return () => clearTimeout(timer)
+    timer = setTimeout(handleTyping, typingSpeed)
+    
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
   }, [displayText, isDeleting, loopNum, typingSpeed, roles])
 
   const scrollToAbout = () => {

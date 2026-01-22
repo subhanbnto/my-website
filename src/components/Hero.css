@@ -196,10 +196,12 @@
     display: inline-block;
     min-width: 180px;
     text-align: left;
+    animation: none; /* Ensure no conflicting animations */
   }
 
   .cursor {
     display: inline-block;
+    animation: blink 1s infinite;
   }
 
   .hero-social {
