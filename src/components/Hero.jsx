@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { HiArrowDown } from 'react-icons/hi'
@@ -9,10 +9,18 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
+  const mountedRef = useRef(false)
 
   const roles = ['Full Stack Developer', 'Web Developer', 'Software Engineer', 'Mobile App Developer']
 
   useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true
+      // Start with first character
+      setDisplayText(roles[0][0])
+      return
+    }
+
     const handleTyping = () => {
       const current = loopNum % roles.length
       const currentText = roles[current]
