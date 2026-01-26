@@ -85,7 +85,7 @@ const Experience = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="section-title">
-          <span className="section-number">02.</span> Experience
+          Experience
         </h2>
         <div className="section-line" />
       </motion.div>

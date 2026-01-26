@@ -44,7 +44,7 @@ const Testimonials = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="section-title">
-          <span className="section-number">05.</span> Testimonials
+          Testimonials
         </h2>
         <div className="section-line" />
       </motion.div>

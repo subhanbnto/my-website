@@ -99,7 +99,7 @@ const Skills = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="section-title">
-          <span className="section-number">04.</span> Technical Skills
+          Technical Skills
         </h2>
         <div className="section-line" />
       </motion.div>

@@ -120,7 +120,7 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="section-title">
-          <span className="section-number">06.</span> Get In Touch
+          Get In Touch
         </h2>
         <div className="section-line" />
       </motion.div>
